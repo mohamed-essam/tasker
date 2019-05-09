@@ -1,0 +1,32 @@
+{
+    "task_group_name": "createEvent",
+    "parameter_count": 2,
+    "subtasks": [
+        {
+            "task_id": "createDatabaseEntries",
+            "subtask_id": "db",
+            "args": [
+                {
+                    "type": "static",
+                    "value": "production"
+                },
+                {
+                    "type": "parameter",
+                    "value": 0
+                }
+            ],
+            "dependencies": []
+        },
+        {
+            "task_id": "sendNotifications",
+            "subtask_id": "notify",
+            "args": [
+                {
+                    "type": "parameter",
+                    "value": 1
+                }
+            ],
+            "dependencies": ["db"]
+        }
+    ]
+}
